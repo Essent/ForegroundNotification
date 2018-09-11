@@ -101,7 +101,7 @@ class BSForegroundNotificationView: UIView, UITextViewDelegate {
             
             height += 45
             
-            if !textView.text.characters.isEmpty {
+            if !textView.text.isEmpty {
                 height += currentHeightForTextView - 45
             }
         }
@@ -349,7 +349,7 @@ class BSForegroundNotificationView: UIView, UITextViewDelegate {
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         
-        if !textView.text.characters.isEmpty {
+        if !textView.text.isEmpty {
             
             dismissNotification {
                 
