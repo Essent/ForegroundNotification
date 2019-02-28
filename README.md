@@ -45,12 +45,10 @@ within **bridging header** file and avoid to import framework for every needed f
 
 ##Usage
 
-######Simply create your foreground notification object with on of three ways:
+######Simply create your foreground notification object with:
 
 ```Swift
-let notification = BSForegroundNotification(userInfo: userInfo) //remote
-let notification = BSForegroundNotification(localNotification: localNotification) //local
-let notification = BSForegroundNotification(titleLabel: "title", subtitleLabel: "subtitle", categoryIdentifier: "category") //custom initializer
+let notification = BSForegroundNotification()
 ```
 
 ######Set a default dismissal time for the notification:
@@ -59,29 +57,10 @@ let notification = BSForegroundNotification(titleLabel: "title", subtitleLabel: 
 notification.timeToDismissNotification = 10 //4 is by default
 ```
 
-######Set delegate which conform to protocol `BSForegroundNotificationDelegate`:
-
-Note that `BSForegroundNotificationDelegate` inherits from `UIApplicationsDelegate`
-
-```Swift
-notification.delegate = self
-```
-
-######Implement optional methods of `BSForegroundNotificationDelegate`
-
-
-```Swift
-@objc public protocol BSForegroundNotificationDelegate: class, UIApplicationDelegate {
-
-    optional func foregroundRemoteNotificationWasTouched(with userInfo: [AnyHashable: Any])
-    optional func foregroundLocalNotificationWasTouched(with localNotification: UILocalNotification)
-}
-```
-
 ######Then present notification:
 
 ```Swift
-notification.presentNotification()
+notification.presentNotification( , completion: () -> void)
 ```
 
 ######If it is needed one of `BSForegroundNotificationDelegate`'s method is called':
