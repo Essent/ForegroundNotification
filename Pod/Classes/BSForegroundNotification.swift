@@ -21,8 +21,8 @@ import AVFoundation
         return UINib(nibName: "BSForegroundNotificationView", bundle: Bundle(for: BSForegroundNotificationView.classForCoder())).instantiate(withOwner: nil, options: nil).first as! BSForegroundNotificationView
     }()
     
-    open static var systemSoundID: SystemSoundID = 1001
-    open static var timeToDismissNotification = 4
+    public static var systemSoundID: SystemSoundID = 1001
+    public static var timeToDismissNotification = 4
     
     static var pendingForegroundNotifications = [BSForegroundNotification]()
     

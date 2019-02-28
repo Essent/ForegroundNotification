@@ -23,38 +23,34 @@ class ViewController: UIViewController, BSForegroundNotificationDelegate {
     
     @IBAction func notificationWithTextFieldTapped(_ sender: UIButton) {
         
-        let notification = BSForegroundNotification(userInfo: userInfoForCategory("TEXT_FIELD"))
+        let notification = BSForegroundNotification()
         
         BSForegroundNotification.systemSoundID = 1000
-        notification.presentNotification()
-        notification.delegate = self
+        notification.presentNotification(userInfo: userInfoForCategory("TEXT_FIELD"), completion: foregroundRemoteNotificationWasTouched)
     }
     
     @IBAction func notificationWithTwoButtonsTapped(_ sender: UIButton) {
         
-        let notification = BSForegroundNotification(userInfo: userInfoForCategory("TWO_BUTTONS"))
+        let notification = BSForegroundNotification()
         
         BSForegroundNotification.systemSoundID = 1001
-        notification.presentNotification()
-        notification.delegate = self
+        notification.presentNotification(userInfo: userInfoForCategory("TWO_BUTTONS"), completion: foregroundRemoteNotificationWasTouched)
     }
     
     @IBAction func notificationWithOneButtonTapped(_ sender: UIButton) {
         
-        let notification = BSForegroundNotification(userInfo: userInfoForCategory("ONE_BUTTON"))
+        let notification = BSForegroundNotification()
         
         BSForegroundNotification.systemSoundID = 1003
-        notification.presentNotification()
-        notification.delegate = self
+        notification.presentNotification(userInfo: userInfoForCategory("ONE_BUTTON"), completion: foregroundRemoteNotificationWasTouched)
     }
     
     @IBAction func notificationWithoutActionsTapped(_ sender: UIButton) {
         
-        let notification = BSForegroundNotification(userInfo: userInfoForCategory(""))
+        let notification = BSForegroundNotification()
         
         BSForegroundNotification.systemSoundID = 1004
-        notification.delegate = self
-        notification.presentNotification()
+        notification.presentNotification(userInfo: userInfoForCategory(""), completion: foregroundRemoteNotificationWasTouched)
     }
     
     //MARK: - Public
@@ -80,7 +76,7 @@ class ViewController: UIViewController, BSForegroundNotificationDelegate {
     
     //MARK: - BSForegroundNotificationDelegate
     
-    func foregroundRemoteNotificationWasTouched(with userInfo: [AnyHashable: Any]) {
+    func foregroundRemoteNotificationWasTouched() {
         responseLabel.text = "touched"
     }
     
