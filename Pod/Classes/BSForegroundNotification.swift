@@ -60,7 +60,7 @@ import AVFoundation
     
     //MARK: - Open
     
-    open func presentNotification(userInfo: [AnyHashable: Any], completion: @escaping () -> Void) {
+    @objc open func presentNotification(userInfo: [AnyHashable: Any], completion: @escaping () -> Void) {
         self.tapHandler = completion
         self.foregroundNotificationView.userInfo = userInfo
         self.foregroundNotificationView.delegate = self
